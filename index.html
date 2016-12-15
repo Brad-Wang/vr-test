@@ -8,6 +8,10 @@
         margin: 0;
         padding: 0;
       }
+      .container {
+        width: 1000px;
+        height: 500px;
+      }
     </style>
   </head>
   <body>
@@ -22,7 +26,9 @@
       function onVrViewLoad() {
         var vrView = new VRView.Player('#vrview', {
           image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/test-1.jpg',
-          is_stereo: true
+          is_stereo: true,
+          height: 100%,
+          width: 100%
         });
       }
     </script>
