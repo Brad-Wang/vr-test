@@ -60,29 +60,41 @@
     <script type="text/javascript">
       var oUl = document.querySelector('#container ul');
       var changeSpan = document.querySelector('.change-text');
-      window.addEventListener('load', onVrViewLoad)
+      var vrView;
+      window.addEventListener('load', onVrViewLoad);
       function onVrViewLoad() {
-        var vrView = new VRView.Player('#vrview', {
+        vrView = new VRView.Player('#vrview', {
           image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/test-1.jpg',
           is_stereo: false,
           height: 400,
           width: '100%',
           is_debug: true
         });
-        oUl.addEventListener('click', function (e) {
-          if (e.target.tagName = 'LI') {
-            that = e.target;
-            changeSpan.innerText = that.innerText;
-            vrView.setContentInfo({
-              image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.jpg';
+      }
+
+      oUl.addEventListener('click', function (e) {
+        if (e.target.tagName = 'LI') {
+          that = e.target;
+          changeSpan.innerText = that.innerText;
+          if (that.className != 'test-6') {
+            vrView.setContent({
+              image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.jpg',
               is_stereo: false,
               height: 400,
               width: '100%',
               is_debug: true
-            })
+            });
+          } else {
+            vrView.setContent({
+              image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.mp4',
+              is_stereo: true,
+              height: 400,
+              width: '100%',
+              is_debug: true
+            });
           }
-        });
-      }
+        }
+      });
     </script>
   </body>
 </html>
