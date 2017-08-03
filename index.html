@@ -77,7 +77,7 @@
                 that = e.target;
                 changeSpan.innerText = that.innerText;
                 if (that.className != 'test-6') {
-                    if (that.className != 'test-3') {
+                    if (that.className === 'test-3') {
                         vrView.setContent({
                             image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.png',
                             is_stereo: false,
