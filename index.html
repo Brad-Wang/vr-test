@@ -64,7 +64,7 @@
         window.addEventListener('load', onVrViewLoad);
         function onVrViewLoad() {
             vrView = new VRView.Player('#vrview', {
-                image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/test-2.jpg',
+                video: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/test-5.mp4',
                 is_stereo: false,
                 height: 400,
                 width: '100%',
@@ -85,6 +85,7 @@
                         is_debug: true
                     });
                 } else {
+                    debugger
                     vrView.setContent({
                         video: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.mp4',
                         is_stereo: false,
