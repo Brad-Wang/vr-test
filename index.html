@@ -5,96 +5,105 @@
     <title>VR测试</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style media="screen">
-      * {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-      }
-      hr {
-        width: 750px;
-        margin: 10px auto 0;
-      }
-      #container {
-        width: 750px;
-        height: 400px;
-        margin: 10px auto 0;
-      }
-      #vrview {
-        height: 400px;
-      }
-      #container ul {
-        margin-top: 20px;
-      }
-      #container li {
-        display: inline-block;
-        width: 16.6%;
-        text-align: center;
-        cursor: pointer;
-      }
-      #container li:hover {
-        text-decoration: underline;
-        color: blue;
-      }
-      h2, h3 {
-        text-align: center;
-        margin-top: 10px;
-      }
-
-      @media screen and (max-width: 750px) {
-        #container, hr {
-          width: 100%;
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
         }
-      }
+        hr {
+            width: 750px;
+            margin: 10px auto 0;
+        }
+        #container {
+            width: 750px;
+            height: 400px;
+            margin: 10px auto 0;
+        }
+        #vrview {
+            height: 400px;
+        }
+        #container ul {
+            margin-top: 20px;
+        }
+        #container li {
+            display: inline-block;
+            width: 16.6%;
+            text-align: center;
+            cursor: pointer;
+        }
+        #container li:hover {
+            text-decoration: underline;
+            color: blue;
+        }
+        h2, h3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 750px) {
+            #container, hr {
+                width: 100%;
+            }
+        }
     </style>
   </head>
   <body>
-    <h2>google vrview测试</h2>
-    <h3>风景项目vr展示 -- <span class="change-text">风景图片1</span></h3>
+    <h2>走进哈尔滨</h2>
+    <h3>东北vr风景展示 -- <span class="change-text">风景图片1</span></h3>
     <hr>
     <div id="container">
-      <div id="vrview"></div>
-      <hr>
-      <ul><li class="test-1">风景图片1</li><li class="test-2">风景图片2</li><li class="test-3">风景图片3</li><li class="test-4">风景图片4</li><li class="test-5">风景图片5</li><li class="test-6">风景视频</li></ul>
+        <div id="vrview"></div>
+        <hr>
+        <ul><li class="test-1">风景图片1</li><li class="test-2">风景图片2</li><li class="test-3">风景图片3</li><li class="test-4">风景图片4</li><li class="test-5">风景图片5</li><li class="test-6">风景视频</li></ul>
     </div>
     <script src="//storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
     <script type="text/javascript">
-      var oUl = document.querySelector('#container ul');
-      var changeSpan = document.querySelector('.change-text');
-      var vrView;
-      window.addEventListener('load', onVrViewLoad);
-      function onVrViewLoad() {
-        vrView = new VRView.Player('#vrview', {
-          image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/test-1.jpg',
-          is_stereo: false,
-          height: 400,
-          width: '100%',
-          is_debug: true
-        });
-      }
-
-      oUl.addEventListener('click', function (e) {
-        if (e.target.tagName = 'LI') {
-          that = e.target;
-          changeSpan.innerText = that.innerText;
-          if (that.className != 'test-6') {
-            vrView.setContent({
-              image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.jpg',
-              is_stereo: false,
-              height: 400,
-              width: '100%',
-              is_debug: true
+        var oUl = document.querySelector('#container ul');
+        var changeSpan = document.querySelector('.change-text');
+        var vrView;
+        window.addEventListener('load', onVrViewLoad);
+        function onVrViewLoad() {
+            vrView = new VRView.Player('#vrview', {
+                image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/test-1.jpg',
+                is_stereo: false,
+                height: 400,
+                width: '100%',
+                is_debug: true
             });
-          } else {
-            vrView.setContent({
-              video: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.mp4',
-              is_stereo: true,
-              height: 400,
-              width: '100%',
-              is_debug: true
-            });
-          }
         }
-      });
+
+        oUl.addEventListener('click', function (e) {
+            if (e.target.tagName = 'LI') {
+                that = e.target;
+                changeSpan.innerText = that.innerText;
+                if (that.className != 'test-6') {
+                    if (that.className != 'test-3') {
+                        vrView.setContent({
+                            image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.png',
+                            is_stereo: false,
+                            height: 400,
+                            width: '100%',
+                            is_debug: true
+                        });
+                    }
+                    vrView.setContent({
+                        image: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.jpg',
+                        is_stereo: false,
+                        height: 400,
+                        width: '100%',
+                        is_debug: true
+                    });
+                } else {
+                    vrView.setContent({
+                        video: 'https://raw.githubusercontent.com/Brad-Wang/vr-test/master/media/' + that.className + '.mp4',
+                        is_stereo: true,
+                        height: 400,
+                        width: '100%',
+                        is_debug: true
+                    });
+                }
+            }
+        });
     </script>
   </body>
 </html>
